@@ -4,6 +4,20 @@ def change(line, instructions):
     return instructions
 
 
+def part_2_changed(instructions):
+    pc,halt,fin = 0,0,0
+    while not halt:
+        change(pc, instructions)
+        instr = instructions[pc][0]
+        if instr == 'jmp' or instr == 'nop':
+            acc, fin = part_1(instructions)
+        if not fin:
+            change(pc, instructions)
+            pc += 1
+        else:
+            break
+    return acc
+
 def part_2(instructions):
     pc,halt = 0,0
     while not halt:
@@ -15,6 +29,7 @@ def part_2(instructions):
         else:
             break
     return acc
+
 
 
 def part_1(instruction_set):
