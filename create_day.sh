@@ -18,7 +18,7 @@ code_file="$day_name.py"
 cp ../$template $code_file
 
 # session information from the browser - cookies. (inspect -> network tab - Refresh the page - Cookies - session)
-session="your session key"
+session="53616c7465645f5f74aac04fad93be99b2495499b8037851fdb2458b802a26ab37d74fdde2ccc509a0de938b69a9abf9"
 
 # create inputs.txt
 # this will download for the current day
