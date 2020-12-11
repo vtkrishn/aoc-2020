@@ -1,6 +1,7 @@
 # get the day count
 # day is the file which contains the day counter eg. 7 will download for 7th day and it increases to 8
 # REQUIRED:: file with name 'counter_file' is required
+year='2020'
 counter_file="day"
 day_count=`cat $counter_file`
 
@@ -23,7 +24,7 @@ session="53616c7465645f5f74aac04fad93be99b2495499b8037851fdb2458b802a26ab37d74fd
 # create inputs.txt
 # this will download for the current day
 input_file="inputs.txt"
-curl https://adventofcode.com/2020/day/$day_count/input --cookie "session=$session" >> $input_file
+curl https://adventofcode.com/$year/day/$day_count/input --cookie "session=$session" >> $input_file
 
 #increment day counter and store in counter_file
 a=`expr $day_count + 1`
