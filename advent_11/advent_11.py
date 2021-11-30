@@ -1,38 +1,42 @@
+def valid(x, y, row, col):
+    return 0 <= x < row and 0 <= y < col
+
+
+def run_for(puzzle, step):
+    if step == 1:
+        return True if puzzle == 1 else False
+    return 4 if puzzle == 1 else 5
+
+
+def print_result(seats, row, col):
+    result = 0
+    for i in range(row):
+        for j in range(col):
+            if seats[i][j] == '#':
+                result += 1
+    print(result)
+
+
+def check_filled(seats, i, j, row, col, puzzle):
+    result = 0
+    for ni, nj in dir:
+        x, y = i + ni, j + nj
+        if run_for(puzzle, 1):
+            if valid(x, y, row, col) and seats[x][y] == '#':
+                result += 1
+        else:
+            while valid(x, y, row, col):
+                if seats[x][y] == '#':
+                    result += 1
+                    break
+                elif seats[x][y] == 'L':
+                    break
+                x += ni
+                y += nj
+    return result
+
+
 def allocate(seats, row, col, puzzle):
-    def valid(x, y, row, col):
-        return 0 <= x < row and 0 <= y < col
-
-    def run_for(puzzle, step):
-        if step == 1:
-            return True if puzzle == 1 else False
-        return 4 if puzzle == 1 else 5
-
-    def print_result(seats, row, col):
-        result = 0
-        for i in range(row):
-            for j in range(col):
-                if seats[i][j] == '#':
-                    result += 1
-        print(result)
-
-    def check_filled(seats, i, j, row, col, puzzle):
-        result = 0
-        for ni, nj in dir:
-            x, y = i + ni, j + nj
-            if run_for(puzzle, 1):
-                if valid(x,y,row, col) and seats[x][y] == '#':
-                    result += 1
-            else:
-                while valid(x,y,row, col):
-                    if seats[x][y] == '#':
-                        result += 1
-                        break
-                    elif seats[x][y] == 'L':
-                        break
-                    x += ni
-                    y += nj
-        return result
-
     while True:
         flip = True
         seat_copy = [copy.copy(seat) for seat in seats]
